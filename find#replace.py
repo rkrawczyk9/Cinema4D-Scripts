@@ -96,6 +96,7 @@ def main():
         
     gui.MessageDialog(print_origsnews)
     doc.EndUndo()
+    c4d.EventAdd()
     return
 
 if __name__=='__main__':
