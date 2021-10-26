@@ -1,6 +1,5 @@
-# Cinema4D-Scripts
-
-Feel free to use any of these!
+# Cinema4D Scripts
+Here are some scripts I've made for my own use. Feel free to use them too!
 
 generate_books_2.py             Creates instances of a book to fit my bookshelf.
 
