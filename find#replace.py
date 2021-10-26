@@ -16,7 +16,8 @@ def main():
         helpstr += "\n# separates find string from replace string\n$n inserts number here starting at n, in selection order"
         helpstr += "\n$X signifies any digit in place of $X. Only one of these is supported per find string"
         helpstr += "\n\nExample: strap_$X#bigstrap_$1 will replace 'strap_4' and 'strap_9' with 'bigstrap_1', 'bigstrap_2', etc."
-        helpstr += "\n\nLeave 'Find' blank to replace whole name.\nType just $+postfix_here to add whatever postfix_here is to the end."
+        helpstr += "\n\nLeave 'Find' blank to replace whole name."
+        helpstr += "\nType just $+postfix_here to add whatever postfix_here is to the end. $- same thing but prefix."
         gui.MessageDialog(helpstr)
         return
     elif findreplace[:2] == "$+":
@@ -27,7 +28,15 @@ def main():
             doc.AddUndo(c4d.UNDOTYPE_CHANGE_SMALL, obj)
             obj.SetName(name)
         return
-    
+    elif findreplace[:2] == "$-":
+        print("Adding " + findreplace[2:] + " to the beginning of each object")
+        for obj in doc.GetActiveObjects(c4d.GETACTIVEOBJECTFLAGS_SELECTIONORDER | c4d.GETACTIVEOBJECTFLAGS_CHILDREN):
+            name = obj.GetName()
+            name = findreplace[2:] + name
+            doc.AddUndo(c4d.UNDOTYPE_CHANGE_SMALL, obj)
+            obj.SetName(name)
+        return
+
     ## Tokenize
     try:
         find, replace = findreplace.split("#")
@@ -41,7 +50,7 @@ def main():
 
     origs = []
     news = []
-    
+
     ## Parse starting no
     ns = []
     for i in range(len(replace)):
@@ -51,7 +60,7 @@ def main():
                 ns.append(int(new_n))
             else:
                 gui.MessageDialog("Expected digit after $")
-    
+
     ## Find and Replace
     for obj in doc.GetActiveObjects(c4d.GETACTIVEOBJECTFLAGS_SELECTIONORDER | c4d.GETACTIVEOBJECTFLAGS_CHILDREN):
         name = obj.GetName()
