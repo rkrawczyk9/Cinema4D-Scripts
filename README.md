@@ -1,4 +1,4 @@
-# Cinema4D Scripts
+# 3D Animation Scripts
 Here are some scripts I've made for my own use. Feel free to use them too!
 
 **generate_books**               Creates instances of a book to fit my bookshelf.
