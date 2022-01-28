@@ -13,6 +13,6 @@ constrain_recv_rig_4         In progress. Essentially I am trying to ma
 
 find#replace                 Batch renames selected objects. Supports inserting sequential numbers, and a way to replace any digit.
 
-constrain_geonulls           Constrains your segmented geometry pieces (stored in nulls a.k.a. 'geonulls') to their respective joints in the rig. The match is determined by naming
+constrain_geonulls           Constrains your segmented geometry pieces (stored in nulls a.k.a. 'geonulls') to their respective joints in the rig. The match is determined by naming
 
-extract_xz                   A step in my mocap prep process. Transfers the global X and Z keyframes of the Hips to a new parent null, and centers the animation. This is to make blending between motion clips more seamless - then if you ignore the null's position during blending, the hips will not slide around due to the two clips having different Hips locations.
+extract_xz                   A step in my mocap prep process. Transfers the global X and Z keyframes of the Hips to a new parent null, and centers the animation. This is to make blending between motion clips more seamless - then if you ignore the null's position during blending, the hips will not slide around due to the two clips having different Hips locations.
