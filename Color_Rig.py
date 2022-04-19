@@ -1,4 +1,5 @@
-# Sets the Display Color of all children to the Display Color of root (selected)
+# Sets the display colors of each descendent to correspond with its prefix (my naming convention)
+# Also hides 'Site's (aka end joints?)
 
 import c4d
 from c4d import gui
@@ -19,19 +20,19 @@ def main():
         for child in children:
             # Check name for prefix and pick the hardcoded color
             color = c4d.Vector() # init
-            if child.GetName()[:4] == "DRV_":
+            if child.GetName()[:4] == "DRV_": # Base joints - they will be DRiVen by something else, like another skeleton's animation
                 color = DRV_color
-            elif child.GetName()[:4] == "GEO_":
+            elif child.GetName()[:4] == "GEO_": # Joints that have rigid geometry attached to them
                 color = GEO_color
-            elif child.GetName()[:4] == "DEF_":
+            elif child.GetName()[:4] == "DEF_": # Joints that have flexible geometry bound to them (DEFormation)
                 color = DEF_color
-            elif child.GetName()[:4] == "RIG_":
+            elif child.GetName()[:4] == "RIG_": # Backend rig stuff
                 color = RIG_color
                 #child[c4d.ID_BASEOBJECT_XRAY] = False
-            elif child.GetName()[:5] == "CTRL_":
+            elif child.GetName()[:5] == "CTRL_": # Controllers that the user can do stuff to
                 color = CTRL_color
                 child[c4d.ID_BASEOBJECT_USECOLOR] = 2
-            elif child.GetName() == "Site":
+            elif child.GetName() == "Site": # End joints that exist only for auto-binding and bone visuals in viewport
                 color = Site_color
                 # Hide Site too
                 child[c4d.ID_BASEOBJECT_XRAY] = False
