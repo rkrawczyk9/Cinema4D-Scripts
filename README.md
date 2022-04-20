@@ -39,6 +39,7 @@ Scripts can't help me with that :)
 
 
 5. Bake and export animation
+
 **export_pointCache** - Saves a point cache for each PLA object and starts export to alembic file. Saves ~5 min per export attempt per character per scene.
 
 **delete_tags** - Deletes expression tags on highpoly rig bind skeleton so export is guaranteed to use the baked animation.
