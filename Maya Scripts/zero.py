@@ -3,7 +3,20 @@ import maya.cmds
 
 
 def main():
-    # This could be wrappeed in a UI window
+    """
+	Zeroes the rotation of the selected objects.
+
+	**Author:**
+
+		Robert Krawczyk, robert.krawczyk@dsvolition.com, 6/27/2022
+		
+    **Todo:**
+    
+        Create UI window to run this instead of hardcoding.
+        
+	"""
+    
+
     setAttrs(maya.cmds.ls(selection=True), ("rotate",), dims = ("X","Y","Z"))
 
 
